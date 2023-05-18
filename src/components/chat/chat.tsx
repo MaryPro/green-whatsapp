@@ -21,6 +21,7 @@ const Chat: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const messagesRef = useChatScroll(messages);
+  const phoneNumber = "79221313861";
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -30,16 +31,16 @@ const Chat: React.FC = () => {
     event.preventDefault();
     if (inputValue.trim() === "") return;
 
-    // await sendMessage(phoneNumber, inputValue).then((res) => {
-    const newMessage: Message = {
-      id: `${messages.length + 1}`,
-      text: inputValue,
-      sender: "user",
-    };
+    await sendMessage(phoneNumber, inputValue).then((res) => {
+      const newMessage: Message = {
+        id: `${messages.length + 1}`,
+        text: inputValue,
+        sender: "user",
+      };
 
-    setMessages([...messages, newMessage]);
-    // console.log(res);
-    // });
+      setMessages([...messages, newMessage]);
+      console.log(res);
+    });
 
     setInputValue("");
   };

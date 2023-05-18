@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #0e171d;
   }
 
-  #app {
+  #root {
     height: 100%;
   }
 `;

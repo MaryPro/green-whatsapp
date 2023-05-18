@@ -1,6 +1,10 @@
 import axios from "axios";
 // @ts-ignore
 
+const idInstance = localStorage.getItem("idInstance");
+const apiTokenInstance = localStorage.getItem("apiTokenInstance");
+const baseURL = "https://api.green-api.com";
+
 export const sendMessage = async (phoneNumber: string, message: string) => {
   try {
     const response = await axios.post(
@@ -32,6 +36,21 @@ export const deleteMessage = async (receiptId: string) => {
     await axios.delete(
       `${baseURL}/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${receiptId}`
     );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getStateInstance = async (
+  idInstance: string,
+  apiTokenInstance: string
+) => {
+  try {
+    const response = await axios.get(
+      `${baseURL}/waInstance${idInstance}/getStateInstance/${apiTokenInstance}`
+    );
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
   }
