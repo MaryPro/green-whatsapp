@@ -23,16 +23,16 @@
 ## Внешний вид приложения
 
 Форма авторизации
-![форма-авторизации](https://github.com/MaryPro/green-whatsapp/raw/main/docs/images/1.png)
+![форма-авторизации](https://github.com/MaryPro/green-whatsapp/raw/main/public/images/1.png)
 
 Неверные параметры
-![неверные-параметры](https://github.com/MaryPro/green-whatsapp/raw/main/docs/images/2.png)
+![неверные-параметры](https://github.com/MaryPro/green-whatsapp/raw/main/public/images/2.png)
 
 Чат после авторизации
-![чат](https://github.com/MaryPro/green-whatsapp/raw/main/docs/images/3.png)
+![чат](https://github.com/MaryPro/green-whatsapp/raw/main/public/images/3.png)
 
 Чат с сообщениями
-![чат-с-сообщениями](https://github.com/MaryPro/green-whatsapp/raw/main/docs/images/4.png)
+![чат-с-сообщениями](https://github.com/MaryPro/green-whatsapp/raw/main/public/images/4.png)
 
 ## Используемые инструменты
 * React
