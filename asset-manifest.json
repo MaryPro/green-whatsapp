@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/green-whatsapp/static/js/main.a6366d6e.js",
+    "main.js": "/green-whatsapp/static/js/main.1524c94d.js",
     "index.html": "/green-whatsapp/index.html",
-    "main.a6366d6e.js.map": "/green-whatsapp/static/js/main.a6366d6e.js.map"
+    "main.1524c94d.js.map": "/green-whatsapp/static/js/main.1524c94d.js.map"
   },
   "entrypoints": [
-    "static/js/main.a6366d6e.js"
+    "static/js/main.1524c94d.js"
   ]
 }
