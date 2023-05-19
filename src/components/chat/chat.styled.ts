@@ -4,7 +4,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: flex-end;
+  width: 100%;
+
+  &:before {
+    content: "";
+    min-height: 50px;
+  }
 
   &:after {
     content: "";
@@ -12,9 +17,27 @@ export const Container = styled.div`
   }
 `;
 
+export const PhoneNumber = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #1f2c33;
+  color: #ffff;
+  position: fixed;
+  width: 100%;
+`;
+
 export const MessagesContainer = styled.div`
   overflow-y: auto;
   padding: 10px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:before {
+    content: "";
+    display: block;
+    margin-top: auto;
+  }
 `;
 
 export const MessageBubbleContainer = styled.div<{
@@ -54,7 +77,7 @@ export const Input = styled.input`
   border-radius: 5px;
   margin-right: 15px;
   background-color: #2a3942;
-  color: #63727b;
+  color: #ffffff;
   font-size: 15px;
 
   &::placeholder {
@@ -73,4 +96,9 @@ export const Button = styled.button`
   background-color: #63727b;
   color: #fff;
   cursor: pointer;
+
+  &:disabled {
+    color: #8c8c8c;
+    cursor: default;
+  }
 `;

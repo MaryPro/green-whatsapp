@@ -7,7 +7,7 @@ import {
   Input,
   Label,
 } from "./login-form.styled";
-import { getStateInstance } from "../chat/hooks";
+import { getStateInstance } from "./login-request";
 
 interface LoginFormProps {
   onLogin: () => void;
@@ -33,7 +33,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     localStorage.setItem("apiTokenInstance", apiTokenInstance);
   }, [apiTokenInstance]);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (idInstance.trim() === "") {
       setIdError(true);
@@ -43,14 +43,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
       setApiTokenError(true);
       return;
     }
-    await getStateInstance(idInstance, apiTokenInstance).then((data) => {
-      if (data && data.stateInstance === "authorized") {
-        onLogin();
-      } else {
-        setIdError(true);
-        setApiTokenError(true);
-      }
-    });
+    getStateInstance(idInstance, apiTokenInstance)
+      .then((data) => {
+        if (data && data.stateInstance === "authorized") {
+          onLogin();
+        } else {
+          setIdError(true);
+          setApiTokenError(true);
+        }
+      })
+      .catch(() => {});
   };
 
   const handleIdInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +78,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             onChange={handleIdInputChange}
           />
         </Label>
-        {idError && <ErrorMessage>Please enter a valid ID</ErrorMessage>}
+        {idError && (
+          <ErrorMessage>Проверьте правильность вашего ID</ErrorMessage>
+        )}
         <Label>
           API Token Instance:
           <Input
@@ -86,7 +90,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           />
         </Label>
         {apiTokenError && (
-          <ErrorMessage>Please enter a valid API Token</ErrorMessage>
+          <ErrorMessage>Проверьте правильность вашего API Token</ErrorMessage>
         )}
         <Button type="submit">Войти</Button>
       </Form>

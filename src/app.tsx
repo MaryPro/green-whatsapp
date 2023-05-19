@@ -3,9 +3,14 @@ import Chat from "./components/chat/chat";
 import LoginForm from "./components/login-form/login-form";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const idInstance = localStorage.getItem("idInstance");
+  const apiTokenInstance = localStorage.getItem("apiTokenInstance");
+
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
+    !!idInstance && !!apiTokenInstance
+  );
+
   const handleLogin = () => {
-    // perform login logic
     setIsLoggedIn(true);
   };
 
