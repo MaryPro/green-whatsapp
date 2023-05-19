@@ -1,7 +1,7 @@
 {
   "name": "green-api-whatsapp",
   "version": "0.1.0",
-  "homepage": "https://MaryPro.github.io/green-whatsapp",
+  "homepage": "https://marypro.github.io/green-whatsapp",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

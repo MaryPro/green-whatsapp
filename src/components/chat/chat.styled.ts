@@ -3,12 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  width: 600px;
+  border: 0.5px solid #63727b;
+  background-color: #121d25;
 
   &:before {
     content: "";
-    min-height: 50px;
+    min-height: 60px;
   }
 
   &:after {
@@ -23,7 +26,7 @@ export const PhoneNumber = styled.div`
   background-color: #1f2c33;
   color: #ffff;
   position: fixed;
-  width: 100%;
+  width: inherit;
 `;
 
 export const MessagesContainer = styled.div`
@@ -56,6 +59,28 @@ export const MessageBubble = styled.div<{ sender: "user" | "recipient" }>`
   padding: 10px;
   border-radius: 10px;
   max-width: 70%;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    ${({ sender }) => (sender === "user" ? "right: 13px;" : "left: 13px;")}
+    top: 26%;
+    width: 0;
+    height: 0;
+    border: ${({ sender }) =>
+      sender === "user"
+        ? "15px solid transparent;"
+        : "15px solid transparent;"} ${({ sender }) =>
+  sender === "user"
+    ? "border-left-color: #015c4b;"
+    : "border-right-color: #1f2c33;"} ${({ sender }) =>
+  sender === "user" ? "border-right: 0;" : "border-left: 0;"}
+    border-top-width: 0;
+    margin-top: -10px;
+    ${({ sender }) =>
+      sender === "user" ? "margin-right: -20px;" : "margin-left: -20px;"}
+  }
 `;
 
 export const Form = styled.form`
@@ -64,7 +89,7 @@ export const Form = styled.form`
   padding: 5px 20px;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: inherit;
   min-height: 62px;
   background-color: #1f2c33;
   box-sizing: border-box;

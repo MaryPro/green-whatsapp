@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Container,
@@ -25,14 +25,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const [idError, setIdError] = useState(false);
   const [apiTokenError, setApiTokenError] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("idInstance", idInstance);
-  }, [idInstance]);
-
-  useEffect(() => {
-    localStorage.setItem("apiTokenInstance", apiTokenInstance);
-  }, [apiTokenInstance]);
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (idInstance.trim() === "") {
@@ -46,6 +38,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     getStateInstance(idInstance, apiTokenInstance)
       .then((data) => {
         if (data && data.stateInstance === "authorized") {
+          localStorage.setItem("idInstance", idInstance);
+          localStorage.setItem("apiTokenInstance", apiTokenInstance);
           onLogin();
         } else {
           setIdError(true);

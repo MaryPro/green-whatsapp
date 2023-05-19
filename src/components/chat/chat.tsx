@@ -111,7 +111,7 @@ const Chat: React.FC = () => {
           onChange={handleInputChange}
         />
         <Button type="submit" disabled={!activePhoneNumber}>
-          Send
+          Отправить
         </Button>
       </Form>
     </Container>
